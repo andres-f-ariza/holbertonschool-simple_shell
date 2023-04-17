@@ -1,34 +1,40 @@
 #include "shell.h"
-
 /**
- * main - Main function for shell
- * @argc: Argument counter
- * @argv: Argument vector
- * Return: Always 0
- */
-
-int main(void) {
-	char *command;
-	int status;
-
-	while (1) {
+main - entry point for the shell program
+Return: 0 on success
+*/
+int main(void)
+{
+	char *buffer = NULL;
+	size_t bufsize = 0;
+	ssize_t nread;
+	char **args = NULL;
+	while (1)
+	{
 		printf("$ ");
-		command = read_input();
-
-		pid_t pid = fork();
-
-		if (pid == -1) {
-			perror("Error forking");
-			exit(EXIT_FAILURE);
-		} else if (pid == 0) {
-				execute_command(command);
-			exit(EXIT_SUCCESS);
-		} else {
-		      			wait(&status);
+		nread = getline(&buffer, &bufsize, stdin);
+		if (nread == -1)
+		{
+			if (feof(stdin))
+			{
+				putchar('\n');
+				exit(EXIT_SUCCESS);
+			}
+			else
+			{
+				perror("readline");
+				exit(EXIT_FAILURE);
+			}
 		}
 
-		free(command);
+		buffer[strcspn(buffer, "\n")] = '\0';
+		if (*buffer == '\0')
+			continue;
+		args = parse_line(buffer);
+		execute(args);
+		free(args);
 	}
 
-	return 0;
+	free(buffer);
+	return (0);
 }
