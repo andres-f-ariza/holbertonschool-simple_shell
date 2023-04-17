@@ -2,7 +2,8 @@
 #define SHELL_H
 #define _GNU_SOURCE
 
-/* libraries */
+/**
+ *libraries */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,6 +11,11 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
+/**
+ *functions*/
+
+char **parse_line(char *line);
+void execute(char **args);
 
 
 

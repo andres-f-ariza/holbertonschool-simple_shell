@@ -28,4 +28,5 @@ if (execve(args[0], args, NULL) == -1)
 			 {
 				 wait(&status);
 }while(!WIFEXITED(status) && !WIFSIGNALED(status));
-	}
+}
+}
