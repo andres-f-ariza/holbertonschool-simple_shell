@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
-main - entry point for the shell program
-Return: 0 on success
+ *main - entry point for the shell program
+ *Return: 0 on success
 */
 int main(void)
 {
@@ -10,9 +10,10 @@ int main(void)
 	ssize_t nread;
 	char **args = NULL;
 	while (1)
+		
 	{
 		printf("$ ");
-		nread = getline(&buffer, &bufsize, stdin);
+nread = getline(&buffer, &bufsize, stdin);
 		if (nread == -1)
 		{
 			if (feof(stdin))

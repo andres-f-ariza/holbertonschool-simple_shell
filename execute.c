@@ -1,11 +1,8 @@
 #include "shell.h"
 /**
-
-execute - function that executes a given command
-
-@args: array of arguments passed with the command
-
-Return: void
+ *execute - function that executes a given command
+ *@args: array of arguments passed with the command
+*Return: void
 */
 void execute(char **args)
 {
@@ -15,7 +12,7 @@ void execute(char **args)
         pid = fork();
 	if (pid == 0)
 	{
-		if (execve(args[0], args, NULL) == -1)
+if (execve(args[0], args, NULL) == -1)
 		{
 			perror("execute");
 		}
@@ -30,5 +27,5 @@ void execute(char **args)
 		         do
 			 {
 				 wait(&status);
-			 } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+}while(!WIFEXITED(status) && !WIFSIGNALED(status));
 	}

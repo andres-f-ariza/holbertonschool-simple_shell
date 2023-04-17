@@ -1,11 +1,8 @@
 #include "shell.h"
 /**
-
-parse_line - function that splits a string into tokens
-
-@line: line of input from user
-
-Return: array of tokens
+ *parse_line - function that splits a string into tokens
+ *@line: line of input from user
+ *Return: array of tokens
 */
 char **parse_line(char *line)
 {
@@ -21,6 +18,7 @@ char **parse_line(char *line)
 	token = strtok(line, " \t\r\n\a");
 	while (token != NULL)
 	{
+
 		tokens[position] = token;
 		position++;
 		if (position >= bufsize)
