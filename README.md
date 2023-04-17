@@ -1,6 +1,6 @@
-# My Shell
+# My_simple_shell
 
-My Shell is a simple command-line shell that can be run on Linux and Unix-based systems. It provides a basic set of commands and features for navigating and manipulating the file system.
+My_simple_shell is a simple command-line shell that can be run on Linux and Unix-based systems. It provides a basic set of commands and features for navigating and manipulating the file system.
 
 ## Requirements
 
@@ -13,10 +13,20 @@ My Shell is a simple command-line shell that can be run on Linux and Unix-based 
 
 1. Clone the repository from GitHub:
 
+https://github.com/andres-f-ariza/holbertonschool-simple_shell.git
+
+2. Compile the shell using GCC:
+
+cd holbertonschool-simple_shell
+gcc -o main main.c
+
+3. Run the shell:
+
+./main
 
 ## Usage
 
-To use the simple_shell, compile all .c files in the repository. Then execute the resulting file. For following explanations, the executable file will be referred as hsh. The simple_shellis capable of execute any executable file, which can be called with the complete direction (for instance /bin/ls), or just with the name of the executable file, if it can be located at any directory of the PATH environment variable (for instance ls).
+To use My_simple_shell, compile all .c files in the repository. Then execute the resulting file. For following explanations, the executable file will be referred as hsh. The simple_shellis capable of execute any executable file, which can be called with the complete direction (for instance /bin/ls), or just with the name of the executable file, if it can be located at any directory of the PATH environment variable (for instance ls).
 
 ## Troubleshooting
 
