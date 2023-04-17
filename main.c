@@ -1,53 +1,34 @@
 #include "shell.h"
 
 /**
- * main - entry point for the shell program
- *
+ * main - Main function for shell
+ * @argc: Argument counter
+ * @argv: Argument vector
  * Return: Always 0
  */
-int main(void)
-{
-	char *buffer = NULL;
-	size_t bufsize = 0;
-	pid_t pid;
+
+int main(void) {
+	char *command;
 	int status;
-	char *argv[] = {NULL};
-	char *envp[] = {NULL};
 
-	while (1)
-	{
+	while (1) {
 		printf("$ ");
-		getline(&buffer, &bufsize, stdin);
+		command = read_input();
 
-		/* remove the trailing newline character */
-		buffer[strcspn(buffer, "\n")] = '\0';
+		pid_t pid = fork();
 
-		pid = fork();
-
-		if (pid == -1)
-		{
-			perror("Error: forking child process failed");
-			exit(1);
-		}
-
-		if (pid == 0)
-		{
-			/* child process */
-			if (execve(buffer, argv, envp) == -1)
-			{
-				perror("Error: execve failed");
-			}
+		if (pid == -1) {
+			perror("Error forking");
 			exit(EXIT_FAILURE);
+		} else if (pid == 0) {
+				execute_command(command);
+			exit(EXIT_SUCCESS);
+		} else {
+		      			wait(&status);
 		}
-		else
-		{
-			/* parent process */
-			wait(&status);
-		}
+
+		free(command);
 	}
 
-	free(buffer);
-	buffer = NULL;
-
-	return (0);
+	return 0;
 }
