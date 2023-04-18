@@ -16,6 +16,7 @@
 
 char **parse_line(char *line);
 void execute(char **args);
+char *prompt(void);
 
 
 
