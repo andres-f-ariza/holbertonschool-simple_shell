@@ -10,9 +10,7 @@ int main(void)
 	ssize_t nread;
 	char **args = NULL;
 	while (1)
-		
 	{
-		printf("$ ");
 nread = getline(&buffer, &bufsize, stdin);
 		if (nread == -1)
 		{
