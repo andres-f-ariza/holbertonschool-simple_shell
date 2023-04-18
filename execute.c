@@ -1,3 +1,5 @@
+#include "shell.h"
+
 /**
  * execute - function that executes a given command
  * @args: array of arguments passed with the command
