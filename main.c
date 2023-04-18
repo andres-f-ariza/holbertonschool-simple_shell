@@ -3,37 +3,20 @@
  *main - entry point for the shell program
  *Return: 0 on success
 */
-int main(void)
+int main(int argc, char **argv)
 {
 	char *buffer = NULL;
-	size_t bufsize = 0;
-	ssize_t nread;
 	char **args = NULL;
-	while (1)
-	{
-nread = getline(&buffer, &bufsize, stdin);
-		if (nread == -1)
-		{
-			if (feof(stdin))
-			{
-				putchar('\n');
-				exit(EXIT_SUCCESS);
-			}
-			else
-			{
-				perror("readline");
-				exit(EXIT_FAILURE);
-			}
-		}
 
-		buffer[strcspn(buffer, "\n")] = '\0';
-		if (*buffer == '\0')
-			continue;
+	while (1) {
+		buffer = prompt();
+		if (!buffer)
+			break;
 		args = parse_line(buffer);
 		execute(args);
+		free(buffer);
 		free(args);
 	}
 
-	free(buffer);
 	return (0);
 }
