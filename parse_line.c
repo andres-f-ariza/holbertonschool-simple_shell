@@ -10,6 +10,7 @@ char **parse_line(char *line)
 	char **tokens = malloc(bufsize * sizeof(char *));
 	char *token;
 	if (!tokens)
+
 	{
 		perror("allocation error");
 		exit(EXIT_FAILURE);

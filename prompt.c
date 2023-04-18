@@ -28,5 +28,5 @@ char *prompt(void)
 		buffer[chars_read - 1] = '\0';
 	}
 
-	return buffer;
+	return (buffer);
 }

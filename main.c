@@ -8,7 +8,8 @@ int main(void)
 	char *buffer = NULL;
 	char **args = NULL;
 
-	while (1) {
+	while (1)
+	{
 		buffer = prompt();
 		if (!buffer)
 			break;

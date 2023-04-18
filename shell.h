@@ -3,7 +3,8 @@
 #define _GNU_SOURCE
 
 /**
- *libraries */
+ *libraries
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,7 +14,8 @@
 #include <sys/types.h>
 
 /**
- *functions*/
+ *functions
+*/
 
 char **parse_line(char *line);
 void execute(char **args);

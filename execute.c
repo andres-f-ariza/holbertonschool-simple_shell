@@ -30,8 +30,8 @@ void execute(char **args)
 	}
 	else
 	{
-		        do
-			{
+
+		do{
 				wait(&status);
 			} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
