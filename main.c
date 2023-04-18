@@ -3,7 +3,7 @@
  *main - entry point for the shell program
  *Return: 0 on success
 */
-int main(int argc, char **argv)
+int main(void)
 {
 	char *buffer = NULL;
 	char **args = NULL;
