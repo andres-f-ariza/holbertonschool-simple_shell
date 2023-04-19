@@ -3,13 +3,6 @@
  *main - entry point for the shell program
  *Return: 0 on success
 */
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "execute.h"
-#include "parse_line.h"
-#include "find_executable.h"
-#include "prompt.h"
 
 #define MAX_INPUT_LEN 1024
 
