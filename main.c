@@ -29,7 +29,8 @@ int main(void)
 			continue;
 		}
 
-		executable_path = find_executable(args[0]);
+		executable_path = (char*) find_executable(args[0]);
+		
 		if (executable_path == NULL)
 		{
 			fprintf(stderr, "%s: command not found\n", args[0]);
