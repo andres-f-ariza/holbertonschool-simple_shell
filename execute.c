@@ -5,7 +5,7 @@
  * @args: array of arguments passed with the command
  * Return: void
  */
-void execute(char **args)
+void execute(char *executable_path, char **args);
 {
 pid_t pid;
 int status;
