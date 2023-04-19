@@ -20,6 +20,7 @@
 char **parse_line(char *line);
 void execute(char **args);
 char *prompt(void);
+char *find_path(char *command);
 
 
 
