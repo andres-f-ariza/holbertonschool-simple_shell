@@ -33,7 +33,7 @@ int main() {
 			continue;
 		}
 
-		status = execute(executable_path, args[1]);
+		status = execute(executable_path, args);
 		free(executable_path);
 		free(args);
 		free(input);
