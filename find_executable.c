@@ -12,8 +12,7 @@ char* find_executable(char* executable) {
 	char* path_dir;
 	char* executable_path = NULL;
 	char path_buffer[1024];
-	
-
+	int MAX_PATH_LEN = 1024;
 
 	while ((path_dir = strtok(path_copy, ":")) != NULL) {
 		strcpy(path_copy, path_dir);
