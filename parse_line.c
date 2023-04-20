@@ -7,7 +7,7 @@
 */
 int MAX_PATH_LEN = 1024;
 
-char* find_executable(char* executable_name, char* path) {
+char *find_executable(char* executable_name, char* path) {
 	char* path_copy;
 	char* path_dir;
 	char path_buffer[MAX_PATH_LEN];
