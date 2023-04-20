@@ -6,13 +6,14 @@
  *Return: a pointer to the full path of the executable if found, otherwise NULL
 */
 
-int path_buffer = 1024;
-
 char* find_executable(char* executable) {
 	char* path = getenv("PATH");
 	char* path_copy = strdup(path);
 	char* path_dir;
 	char* executable_path = NULL;
+	char path_buffer[1024];
+	
+
 
 	while ((path_dir = strtok(path_copy, ":")) != NULL) {
 		strcpy(path_copy, path_dir);
