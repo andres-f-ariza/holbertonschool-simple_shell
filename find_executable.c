@@ -6,7 +6,7 @@
  *Return: a pointer to the full path of the executable if found, otherwise NULL
 */
 
-char path_buffer = 1024;
+int path_buffer = 1024;
 
 char* find_executable(char* executable) {
 	char* path = getenv("PATH");
