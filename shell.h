@@ -18,11 +18,7 @@
 */
 
 char **parse_line(char *line);
-void execute(char **args)
-char* find_executable(char* executable);
-char *prompt(void);
-char *find_path(char *command);
-
+void execute(char **args);
 
 
 #endif
