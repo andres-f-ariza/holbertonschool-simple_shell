@@ -19,7 +19,7 @@
 
 char **parse_line(char *line);
 void execute(char *executable_path, char **args);
-char *find_executable(char* executable_name, char* path);
+char* find_executable(char* executable);
 char *prompt(void);
 char *find_path(char *command);
 
