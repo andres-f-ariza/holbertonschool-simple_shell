@@ -28,4 +28,4 @@ void execute(char **args)
 			 {
 				 wait(&status);
 			 } while (!WIFEXITED(status) && !WIFSIGNALED(status));
-	}while(!WIFEXITED(status) && !WIFSIGNALED(status));
+}
