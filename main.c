@@ -5,7 +5,7 @@
 */
 
 
-int main(int argc, char** argv) {
+int main(int argc __attribute__((unused)), char** argv) {
 	char* executable_path = argv[1];
 	char** args;
 	int status;
