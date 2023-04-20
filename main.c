@@ -14,12 +14,14 @@ int main(void)
 
 	while (1)
 	{
+
+		printf("esto es un prompt ");
 		nread = getline(&buffer, &bufsize, stdin);
 		if (nread == -1)
 		{
 			if (feof(stdin))
 			{
-				exit(EXIT_SUCCESS);
+				break;
 			}
 			else
 			{
