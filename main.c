@@ -19,7 +19,6 @@ int main(void)
 		{
 			if (feof(stdin))
 			{
-				putchar('\n');
 				exit(EXIT_SUCCESS);
 			}
 			else
