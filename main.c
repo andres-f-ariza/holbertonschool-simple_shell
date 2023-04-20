@@ -14,8 +14,6 @@ int main(void)
 
 	while (1)
 	{
-		printf("$ ");
-
 		nread = getline(&buffer, &bufsize, stdin);
 		if (nread == -1)
 		{
