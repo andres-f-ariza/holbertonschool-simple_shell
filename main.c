@@ -13,7 +13,6 @@ int main(void)
 	{
 		printf("$ ");
 		nread = getline(&buffer, &bufsize, stdin);
-		nread = getline(&buffer, &bufsize, stdin);
 		if (nread == -1)
 		{
 			if (feof(stdin))
