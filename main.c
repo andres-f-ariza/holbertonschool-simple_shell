@@ -4,17 +4,16 @@
  *Return: 0 on success
 */
 
+#include <stdio.h>
+#include "execute.h"
+
 int main(int argc, char** argv) {
-	char* executable_path = find_executable(argv[1]);
+	char* executable_path = argv[1];
+	char** args;
+	int status;
 
-	if (executable_path == NULL) {
-		printf("Executable '%s' not found in PATH\n", argv[1]);
-		exit(1);
-	}
+	args = argv + 2;
+	status = execute(executable_path, args);
 
-	char** args = argv + 1;
-	int status = execute(executable_path, args);
-
-	free(executable_path);
 	return status;
 }
