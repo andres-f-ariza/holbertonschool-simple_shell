@@ -5,37 +5,33 @@
  *@line: line of input from user
  *Return: array of tokens
 */
-char **parse_line(char *line)
+
+char *find_executable(char *command)
 {
-	int bufsize = 64, position = 0;
-	char **tokens = malloc(bufsize * sizeof(char *));
-	char *token;
-
-	if (!tokens)
-	{
-
-		perror("allocation error");
-		exit(EXIT_FAILURE);
+	char *path = getenv("PATH");
+	if (path == NULL) {
+		return NULL;
 	}
-
-	token = strtok(line, " \t\r\n\a");
-	while (token != NULL)
-	{
-
-		tokens[position] = token;
-		position++;
-		if (position >= bufsize)
-		{
-			bufsize += 64;
-			tokens = realloc(tokens, bufsize * sizeof(char *));
-			if (!tokens)
-			{
-				perror("allocation error");
-				exit(EXIT_FAILURE);
-			}
+	char *path_copy = strdup(path);
+	if (path_copy == NULL) {
+		perror("strdup");
+		return NULL;
+	}
+	char *path_dir = strtok(path_copy, ":");
+	while (path_dir != NULL) {
+		char path_buffer[MAX_PATH_LEN];
+		if (snprintf(path_buffer, MAX_PATH_LEN, "%s/%s", path_dir, command) >= MAX_PATH_LEN) {
+			perror("snprintf");
+			free(path_copy);
+			return NULL;
 		}
-		token = strtok(NULL, " \t\r\n\a");
+		if (access(path_buffer, X_OK) == 0) {
+			char *result = strdup(path_buffer);
+			free(path_copy);
+			return result;
+		}
+		path_dir = strtok(NULL, ":");
 	}
-	tokens[position] = NULL;
-	return (tokens);
+	free(path_copy);
+	return NULL;
 }
