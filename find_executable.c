@@ -6,32 +6,26 @@
  *Return: a pointer to the full path of the executable if found, otherwise NULL
 */
 
-char *find_executable(char *command)
-{
-	char *path = getenv("PATH");
-	if (path == NULL) {
-		return NULL;
-	}
-	char *path_copy = strdup(path);
-	if (path_copy == NULL) {
-		perror("strdup");
-		return NULL;
-	}
-	char *path_dir = strtok(path_copy, ":");
-	while (path_dir != NULL) {
+#define MAX_PATH_LEN 1024
+
+char* find_executable(char* executable) {
+	char* path = getenv("PATH");
+	char* path_copy = strdup(path);
+	char* path_dir;
+	char* executable_path = NULL;
+
+	while ((path_dir = strtok(path_copy, ":")) != NULL) {
+		strcpy(path_copy, path_dir);
+
 		char path_buffer[MAX_PATH_LEN];
-		if (snprintf(path_buffer, MAX_PATH_LEN, "%s/%s", path_dir, command) >= MAX_PATH_LEN) {
-			perror("snprintf");
-			free(path_copy);
-			return NULL;
-		}
+		snprintf(path_buffer, MAX_PATH_LEN, "%s/%s", path_dir, executable);
+
 		if (access(path_buffer, X_OK) == 0) {
-			char *result = strdup(path_buffer);
-			free(path_copy);
-			return result;
+			executable_path = strdup(path_buffer);
+			break;
 		}
-		path_dir = strtok(NULL, ":");
 	}
+
 	free(path_copy);
-	return NULL;
+	return executable_path;
 }
