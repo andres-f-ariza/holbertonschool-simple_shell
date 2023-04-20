@@ -13,9 +13,8 @@ void execute(char **args)
 	if (pid == 0)
 	{
 		if (execve(args[0], args, NULL) == -1)
-			if (execve(args[0], args, NULL) == -1)
-			{
-				perror("execute");
+		{
+			perror("execute");
 			}
 		exit(EXIT_FAILURE);
 	}
@@ -30,4 +29,3 @@ void execute(char **args)
 				 wait(&status);
 			 } while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}while(!WIFEXITED(status) && !WIFSIGNALED(status));
-}
