@@ -38,6 +38,7 @@ char **parse_line(char *line)
 		token = strtok(NULL, " \t\r\n\a");
 	}
 	tokens[position] = NULL;
-	free(tokens);
 	return (tokens);
+	free (tokens);
+       
 }
