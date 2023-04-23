@@ -12,6 +12,10 @@ char **parse_line(char *line)
 	char **tokens = malloc(bufsize * sizeof(char *));
 	char *token;
 
+	/**
+	 *conditional checking whether the tokens pointer is null or not.
+	 */
+
 	if (!tokens)
 	{
 		perror("allocation error");
@@ -23,7 +27,10 @@ char **parse_line(char *line)
 	{
 		tokens[position] = token;
 		position++;
-
+/**
+ *conditional checking if the array of tokens is bigger than the predetermined
+ *size
+ */
 		if (position >= bufsize)
 		{
 			bufsize += 64;
