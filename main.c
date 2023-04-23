@@ -7,8 +7,8 @@
 
 int main(void)
 {
-	char *buffer = 500;
-	size_t bufsize = 500;
+	char *buffer = malloc(500);
+	size_t bufsize = 0;
 	ssize_t nread;
 	char **args = NULL;
 
