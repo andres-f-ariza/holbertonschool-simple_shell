@@ -29,8 +29,6 @@ int main(void)
 			}
 		}
 
-		buffer[strcspn(buffer, "\n")] = '\0';
-
 		if (*buffer == '\0')
 			continue;
 

@@ -1,11 +1,10 @@
 #include "shell.h"
 
 /**
- *execute - function that executes a given command
- *@args: array of arguments passed with the command
- *Return: void
+ * execute - function that executes a given command
+ * @args: array of arguments passed with the command
+ * Return: void
  */
-
 void execute(char **args)
 {
 	pid_t pid;
@@ -14,6 +13,7 @@ void execute(char **args)
 	pid = fork();
 	if (pid == 0)
 	{
+		/* Child process */
 		if (execve(args[0], args, NULL) == -1)
 		{
 			perror("execute");
@@ -22,13 +22,15 @@ void execute(char **args)
 	}
 	else if (pid < 0)
 	{
+		/* Error forking */
 		perror("fork");
 	}
 	else
 	{
-		         do
-			 {
-				 wait(&status);
-			 } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+		/* Parent process */
+		        do
+			{
+				waitpid(pid, &status, WUNTRACED);
+			} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
 }
