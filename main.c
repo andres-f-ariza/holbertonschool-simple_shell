@@ -12,7 +12,7 @@ int main(void)
 	ssize_t nread;
 	char **args = NULL;
 	char **argv = NULL;
-	
+
 
 	while (1)
 	{
@@ -36,7 +36,7 @@ int main(void)
 
 		args = parse_line(buffer);
 
-		execute(argv);
+		execute(args);
 		free(args);
 	}
 
