@@ -6,13 +6,15 @@
  *Return: array of tokens
  */
 
-char **parse_line(char *line)
+int **parse_line(char *line)
 {
 	int bufsize = 64, position = 0, token_count = 0;
 	char **tokens = malloc(bufsize * sizeof(char *));
 	char *token;
 	struct stat st;
 	int filestatus;
+	char *auxpath;
+
 	/**
 	 *conditional checking whether the tokens pointer is null or not.
 	 */
@@ -41,7 +43,7 @@ char **parse_line(char *line)
  */
  
 		filestatus = stat(tokens[0],&st);
-		char *auxpath;
+
 		if(getenv("PATH") != NULL)
 			auxpath = find_path(tokens[0]);
 		/**
