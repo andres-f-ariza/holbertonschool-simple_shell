@@ -16,7 +16,7 @@
 /**
  *functions
 */
-
+char *prompt(void);
 char **parse_line(char *line);
 void execute(char **args);
 char *find_path(char *file);

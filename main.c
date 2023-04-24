@@ -14,7 +14,7 @@ int main(void)
 
 	while (1)
 	{
-
+		buffer = prompt();
 		nread = getline(&buffer, &bufsize, stdin);
 		if (nread == -1)
 		{
