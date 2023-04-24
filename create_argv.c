@@ -11,7 +11,7 @@ char **create_argv(char *path, char **args)
 {
 	int arg_count = 0;
 	char **argv = NULL;
-	int arg_count = 0;
+	int i = 0;
 
 	/* count the number of arguments */
 	while (args[arg_count] != NULL)
@@ -29,7 +29,7 @@ char **create_argv(char *path, char **args)
 	argv[0] = path;
 
 	/* copy the arguments into the array */
-	for (int i = 0; i < arg_count; i++)
+	for (i = 0; i < arg_count; i++)
 	{
 		argv[i + 1] = args[i];
 	}
