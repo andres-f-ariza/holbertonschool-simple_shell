@@ -30,7 +30,7 @@ void execute(char **args)
 		/* Parent process */
 		        do
 			{
-				waitpid(pid, &status, WUNTRACED);
+				wait(&status);
 			} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
 }

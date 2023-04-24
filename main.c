@@ -34,8 +34,7 @@ int main(void)
 
 		args = parse_line(buffer);
 
-		execute(args);
-
+		execute(argv);
 		free(args);
 	}
 
