@@ -11,7 +11,8 @@ char **parse_line(char *line)
 	int bufsize = 64, position = 0, token_count = 0;
 	char **tokens = malloc(bufsize * sizeof(char *));
 	char *token;
-
+	struct stat st;
+	
 	/**
 	 *conditional checking whether the tokens pointer is null or not.
 	 */
@@ -30,7 +31,7 @@ char **parse_line(char *line)
 /**
  *execve requires the array of tokens to end in NULL
  */
-		while (tokens[arg_count] != NULL)
+		while (tokens[token_count] != NULL)
 	{
 			token_count++;
 		tokens[token_count + 1] = NULL;
@@ -38,7 +39,7 @@ char **parse_line(char *line)
 /**
  *check if tokens[0] eixst in PATH
  */
-		struct stat st;
+ 
 		int filestatus;
 		filestatus = stat(tokens[0];&st);
 		char *auxpath;
