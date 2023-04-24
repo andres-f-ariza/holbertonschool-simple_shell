@@ -12,6 +12,9 @@ void execute(char **args)
 	if(args[0] != NULL)
 	{
 	pid = fork();
+	/**
+	 *if pid = 0, this is the child proccess
+	 */
 	if (pid == 0)
 	{
 		/* Child process */
@@ -20,6 +23,8 @@ void execute(char **args)
 			perror("execute");
 		}
 		exit(EXIT_FAILURE);
+		if (_strcmp(argv[0], "env") == 0)
+			builtin_env();
 	}
 	else if (pid < 0)
 	{
