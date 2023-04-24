@@ -12,7 +12,7 @@ char **parse_line(char *line)
 	char **tokens = malloc(bufsize * sizeof(char *));
 	char *token;
 	struct stat st;
-	
+	int filestatus;
 	/**
 	 *conditional checking whether the tokens pointer is null or not.
 	 */
@@ -40,8 +40,7 @@ char **parse_line(char *line)
  *check if tokens[0] eixst in PATH
  */
  
-		int filestatus;
-		filestatus = stat(tokens[0];&st);
+		filestatus = stat(tokens[0],&st);
 		char *auxpath;
 		if(getenv("PATH") != NULL)
 			auxpath = find_path(tokens[0]);
