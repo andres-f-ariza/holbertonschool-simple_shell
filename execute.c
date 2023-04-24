@@ -5,7 +5,7 @@
  * @args: array of arguments passed with the command
  * Return: void
  */
-void execute(char **args, char **argv)
+void execute(char **args)
 {
 	pid_t pid;
 	int status;
@@ -14,7 +14,7 @@ void execute(char **args, char **argv)
 	if (pid == 0)
 	{
 		/* Child process */
-		if (execve(args[0], argv, NULL) == -1)
+		if (execve(args[0], args, NULL) == -1)
 		{
 			perror("execute");
 		}
