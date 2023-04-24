@@ -6,7 +6,7 @@
  *Return: array of tokens
  */
 
-int **parse_line(char *line)
+char **parse_line(char *line)
 {
 	int bufsize = 64, position = 0, token_count = 0;
 	char **tokens = malloc(bufsize * sizeof(char *));
@@ -53,7 +53,6 @@ int **parse_line(char *line)
 		if(auxpath != NULL && tokens[0][0]!='.'&& strcmp(tokens[0],"env") != 0)
 		{
 			tokens[0] = auxpath;
-			return(1);
 		}
 		if (auxpath != NULL)
 			free(auxpath);
@@ -62,7 +61,6 @@ int **parse_line(char *line)
 		 */
 		if(filestatus == 0 || strcmp(tokens[0],"exit") == 0 || strcmp(tokens[0],"env") == 0)
 			return (0);
-		return(-1);
 /**
  *conditional checking if the array of tokens is bigger than the predetermined
  *size
