@@ -11,6 +11,8 @@ int main(void)
 	size_t bufsize = 0;
 	ssize_t nread;
 	char **args = NULL;
+	char **argv = NULL;
+	
 
 	while (1)
 	{

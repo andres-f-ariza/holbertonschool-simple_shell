@@ -11,6 +11,7 @@ char **create_argv(char *path, char **args)
 {
 	int arg_count = 0;
 	char **argv = NULL;
+	int arg_count = 0;
 
 	/* count the number of arguments */
 	while (args[arg_count] != NULL)
