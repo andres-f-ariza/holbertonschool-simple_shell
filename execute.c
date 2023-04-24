@@ -9,7 +9,8 @@ void execute(char **args)
 {
 	pid_t pid;
 	int status;
-
+	if(args[0] != NULL)
+	{
 	pid = fork();
 	if (pid == 0)
 	{
@@ -33,4 +34,5 @@ void execute(char **args)
 				wait(&status);
 			} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
+}
 }
