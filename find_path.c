@@ -1,3 +1,5 @@
+#include "shell.h"
+
 /**
  * find_path - Search for a file in the PATH
  * @file: String to file to search
