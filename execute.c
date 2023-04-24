@@ -23,7 +23,7 @@ void execute(char **args)
 			perror("execute");
 		}
 		exit(EXIT_FAILURE);
-		if (_strcmp(argv[0], "env") == 0)
+		if (strcmp(argv[0], "env") == 0)
 			builtin_env();
 	}
 	else if (pid < 0)
