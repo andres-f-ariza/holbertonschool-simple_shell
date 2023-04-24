@@ -20,5 +20,6 @@
 char **parse_line(char *line);
 void execute(char **args);
 char **create_argv(char *path, char **args);
+char *find_path(char *file);
 
 #endif
