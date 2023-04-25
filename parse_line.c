@@ -30,6 +30,8 @@ char **parse_line(char *line)
 	{
 		tokens[position] = token;
 		position++;
+		token = strtok(NULL, " \t\r\n\a");
+	}
 
 /**
  *check if tokens[0] eixst in PATH
@@ -37,17 +39,21 @@ char **parse_line(char *line)
 
 //		filestatus = stat(tokens[0],&st);
 
-		if(getenv("PATH") != NULL)
-			auxpath = find_path(tokens[0]);
 		/**
 		 *if tokens[0] is found in PATH, update tokens[0] with full path
 		 */
-		if(auxpath != NULL && tokens[0][0]!='.'&& strcmp(tokens[0],"env") != 0)
+	if(strstr(tokens[0],"/") != NULL && strcmp(tokens[0],"env") != 0 && strcmp(tokens[0],"exit") != 0)
 		{
 			tokens[0] = auxpath;
 		}
-		if (auxpath != NULL)
-			free(auxpath);
+		if(getenv("PATH") != NULL)
+			char *auxpath = find_path(tokens[0]);
+			if (auxpath != NULL)
+			{
+				tokens[0] = auxpath;
+				free(auxpath);
+			}
+		}
 		/**
 		 *if file exists or command is exit or env.
 		 */
@@ -68,9 +74,6 @@ char **parse_line(char *line)
 			}
 		}
 
-		token = strtok(NULL, " \t\r\n\a");
-
-	}
 /**
  *Mark the end of the array with a NULL pointer
  */
