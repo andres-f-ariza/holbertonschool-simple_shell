@@ -33,10 +33,10 @@ void execute(char **args)
 		else
 		{
 			/* Parent process */
-			                        do
-						{
-							wait(&status);
-						} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+                do
+		{
+		wait(&status);
+		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 		}
 	}
 }
