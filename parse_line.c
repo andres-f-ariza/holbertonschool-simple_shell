@@ -11,7 +11,7 @@ char **parse_line(char *line)
 	int bufsize = 64, position = 0;
 	char **tokens = NULL;
 	char *token = NULL;
-//	struct stat st;
+/*	struct stat st;*/
 	int filestatus;
 	char *auxpath;
 
@@ -37,7 +37,7 @@ char **parse_line(char *line)
  *check if tokens[0] eixst in PATH
  */
 
-//		filestatus = stat(tokens[0],&st);
+/*		filestatus = stat(tokens[0],&st);*/
 
 		/**
 		 *if tokens[0] is found in PATH, update tokens[0] with full path
@@ -47,7 +47,7 @@ char **parse_line(char *line)
 			tokens[0] = auxpath;
 		}
 		if(getenv("PATH") != NULL)
-			char *auxpath = find_path(tokens[0]);
+			auxpath = find_path(tokens[0]);
 			if (auxpath != NULL)
 			{
 				tokens[0] = auxpath;
@@ -57,7 +57,8 @@ char **parse_line(char *line)
 		/**
 		 *if file exists or command is exit or env.
 		 */
-//		if(filestatus == 0 || strcmp(tokens[0],"exit") == 0 || strcmp(tokens[0],"env") == 0)
+/*		if(filestatus == 0 || strcmp(tokens[0],"exit") == 0 || strcmp(tokens[0],"env") == 0)*/
+
 			return (NULL);
 /**
  *conditional checking if the array of tokens is bigger than the predetermined
