@@ -9,7 +9,7 @@
 char **parse_line(char *line)
 {
 	int bufsize = 64, position = 0;
-	char **tokens = NULL;
+	char **tokens = malloc(bufsize*(sizeof(char*)));
 	char *token = NULL;
 	/*struct stat st;*/
 	/*int filestatus;*/
@@ -66,20 +66,25 @@ char **parse_line(char *line)
 	 *conditional checking if the array of tokens is bigger than the predetermined
 	 *size
 	 */
-	if (position >= bufsize)
-	{
-		bufsize += 64;
-		tokens = realloc(tokens, bufsize * sizeof(char *));
-		if (!tokens)
-		{
-			perror("allocation error");
-			exit(EXIT_FAILURE);
-		}
-	}
-
+	/**
+	 *if (position >= bufsize)
+	*{
+	*/
+		/**
+		 *	bufsize += 64;
+		 *tokens = realloc(tokens, bufsize * sizeof(char *));
+		 *if (!tokens)
+		 *{
+		 *	perror("allocation error");
+		 *	exit(EXIT_FAILURE);
+		 *}
+		 *}
+		 */
 	/**
 	 *Mark the end of the array with a NULL pointer
 	 */
 	tokens[position+1] = NULL;
+	for(;tokens[position];position++)
+		printf("%s\n",tokens[position]);
 	return (tokens);
 }

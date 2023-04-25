@@ -7,14 +7,17 @@
 
 int main(void)
 {
-	char *buffer = malloc(500);
-	size_t bufsize = 0;
+	char *buffer = NULL;
+	size_t bufsize = 500;
 	ssize_t nread;
 	char **args = NULL;
 
 	while (1)
 	{
-		buffer = prompt();
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "$ ", 2);
+    
+		buffer = malloc(500);
 		nread = getline(&buffer, &bufsize, stdin);
 		if (nread == -1)
 		{
@@ -29,7 +32,7 @@ int main(void)
 			}
 		}
 
-		if (*buffer == '\0')
+		if (*buffer == '\0' || *buffer == '\n')
 			continue;
 
 		args = parse_line(buffer);
