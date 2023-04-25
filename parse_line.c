@@ -8,10 +8,10 @@
 
 char **parse_line(char *line)
 {
-	int bufsize = 64, position = 0, token_count = 0;
-	char **tokens = malloc(bufsize * sizeof(char *));
-	char *token;
-	struct stat st;
+	int bufsize = 64, position = 0;
+	char **tokens = NULL;
+	char *token = NULL;
+//	struct stat st;
 	int filestatus;
 	char *auxpath;
 
@@ -30,25 +30,17 @@ char **parse_line(char *line)
 	{
 		tokens[position] = token;
 		position++;
-/**
- *execve requires the array of tokens to end in NULL
- */
-		while (tokens[token_count] != NULL)
-	{
-			token_count++;
-		tokens[token_count + 1] = NULL;
-	}
+
 /**
  *check if tokens[0] eixst in PATH
  */
- 
-		filestatus = stat(tokens[0],&st);
+
+//		filestatus = stat(tokens[0],&st);
 
 		if(getenv("PATH") != NULL)
 			auxpath = find_path(tokens[0]);
 		/**
 		 *if tokens[0] is found in PATH, update tokens[0] with full path
-		 *and return 1
 		 */
 		if(auxpath != NULL && tokens[0][0]!='.'&& strcmp(tokens[0],"env") != 0)
 		{
@@ -57,10 +49,10 @@ char **parse_line(char *line)
 		if (auxpath != NULL)
 			free(auxpath);
 		/**
-		 *if file exists or command is exit or env, retun 0
+		 *if file exists or command is exit or env.
 		 */
-		if(filestatus == 0 || strcmp(tokens[0],"exit") == 0 || strcmp(tokens[0],"env") == 0)
-			return (0);
+//		if(filestatus == 0 || strcmp(tokens[0],"exit") == 0 || strcmp(tokens[0],"env") == 0)
+			return (NULL);
 /**
  *conditional checking if the array of tokens is bigger than the predetermined
  *size
@@ -79,5 +71,9 @@ char **parse_line(char *line)
 		token = strtok(NULL, " \t\r\n\a");
 
 	}
-return (tokens);
+/**
+ *Mark the end of the array with a NULL pointer
+ */
+	tokens[position] = NULL;
+	return (tokens);
 }
