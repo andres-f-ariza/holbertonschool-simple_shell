@@ -13,7 +13,7 @@ char **parse_line(char *line)
 	char *token = NULL;
 	/*struct stat st;*/
 	/*int filestatus;*/
-	char *auxpath;
+	char *auxpath = NULL;
 
 	/**
 	 *conditional checking whether the tokens pointer is null or not.
