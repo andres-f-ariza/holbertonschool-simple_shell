@@ -15,7 +15,7 @@ int main(void)
 
 	while (1)
 	{
-		i = 0;
+/*		i = 0;*/
 		if (isatty(STDIN_FILENO))
 
 			write(STDOUT_FILENO, "($)", 3);
