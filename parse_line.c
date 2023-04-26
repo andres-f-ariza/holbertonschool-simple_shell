@@ -46,6 +46,12 @@ char **parse_line(char *line)
 	}
 	if (auxpath != NULL)
 		free(auxpath);
+
+	if(filestatus == 0)
+	{
+		//do nothing;
+	}
+	
        	/*return (NULL);*/
 	/**
 	 *conditional checking if the array of tokens is bigger than the predetermined
@@ -68,7 +74,7 @@ char **parse_line(char *line)
 	/**
 	 *Mark the end of the array with a NULL pointer
 	 */
-	tokens[position+1] = NULL;
+	tokens[position] = NULL;
 	for(;tokens[position];position++)
 		printf("%s\n",tokens[position]);
 	return (tokens);
