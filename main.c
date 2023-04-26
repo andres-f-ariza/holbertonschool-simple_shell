@@ -12,15 +12,13 @@ int main(void)
 	ssize_t nread;
 	char **args = NULL;
 /*	int i;*/
-
+	buffer = malloc(500);
 	while (1)
 	{
 /*		i = 0;*/
 		if (isatty(STDIN_FILENO))
 
 			write(STDOUT_FILENO, "($)", 3);
-
-		buffer = malloc(500);
 		nread = getline(&buffer, &bufsize, stdin);
 		if (nread == -1)
 		{
@@ -48,11 +46,12 @@ int main(void)
  */
 		execute(args);
 	free(args);
-	
+
 
 	}
 
 	free(buffer);
+	buffer = NULL;
 	return (0);
 
 }
