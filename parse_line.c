@@ -49,9 +49,9 @@ char **parse_line(char *line)
 
 	if(filestatus == 0)
 	{
-		//do nothing;
+		/*do nothing;*/
 	}
-	
+
        	/*return (NULL);*/
 	/**
 	 *conditional checking if the array of tokens is bigger than the predetermined
