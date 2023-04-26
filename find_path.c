@@ -12,20 +12,17 @@ char *find_path(char *file)
 	struct stat st;
 	int pathlen, filelen, filestatus, dirlen;
 
-	printf("On find path");
 	pathlen = strlen(getenv("PATH"));
 	path = calloc((pathlen + 1), sizeof(*path));
 	if (path == NULL)
 		return (NULL);
 	auxpath = path;
 	strcpy(path, getenv("PATH"));
-	path = strtok(path, "=");
-	path = strtok(NULL, "=");
 	path = strtok(path, ":");
 	filelen = strlen(file);
 	while (path)
 	{
-		printf("Actual dir: %s", path);
+		printf("Actual dir: %s\n", path);
 		direction = calloc((pathlen + filelen + 2), sizeof(*direction));
 		if (direction == NULL)
 			return (NULL);
@@ -34,7 +31,7 @@ char *find_path(char *file)
 		if (direction[dirlen - 1] != '/')
 			direction[dirlen] = '/';
 		direction = strcat(direction, file);
-		printf("Got direction: %s", direction);
+		printf("Got direction: %s\n", direction);
 		filestatus = stat(direction, &st);
 		if (filestatus == 0)
 		{

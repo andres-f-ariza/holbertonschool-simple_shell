@@ -44,10 +44,9 @@ int main(void)
 			i++;
 		}
 
-/**
- *		execute(args);
- *	free(args);
- */
+		execute(args);
+	free(args);
+
 	}
 
 	free(buffer);
