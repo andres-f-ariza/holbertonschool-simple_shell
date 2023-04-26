@@ -31,7 +31,7 @@ char *find_path(char *file)
 		if (direction[dirlen - 1] != '/')
 			direction[dirlen] = '/';
 		direction = strcat(direction, file);
-		printf("Got direction: %s\n", direction);
+/*		printf("Got direction: %s\n", direction);*/
 		filestatus = stat(direction, &st);
 		if (filestatus == 0)
 		{
