@@ -11,12 +11,14 @@ int main(void)
 	size_t bufsize = 500;
 	ssize_t nread;
 	char **args = NULL;
+	int i;
 
 	while (1)
 	{
+		i = 0;
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
-    
+
 		buffer = malloc(500);
 		nread = getline(&buffer, &bufsize, stdin);
 		if (nread == -1)
@@ -36,9 +38,16 @@ int main(void)
 			continue;
 
 		args = parse_line(buffer);
+		while(args[i] != NULL)
+		{
+			printf("%s\n",args[i]);
+			i++;
+		}
 
-		execute(args);
-		free(args);
+/**
+ *		execute(args);
+ *	free(args);
+ */
 	}
 
 	free(buffer);

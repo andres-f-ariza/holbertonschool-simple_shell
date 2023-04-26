@@ -38,21 +38,19 @@ char **parse_line(char *line)
 	 */
 
 	filestatus = stat(tokens[0], &st);
-	if (getenv("PATH") != NULL)
+	if (getenv("PATH") != NULL && filestatus == -1)
+	{
 		auxpath = find_path(tokens[0]);
-	if (auxpath != NULL)
-	{
-		tokens[0] = auxpath;
+		if (auxpath != NULL)
+		{
+			tokens[0] = auxpath;
+		}
+		else
+		{
+			perror("test");
+			return (NULL);
+		}
 	}
-	if (auxpath != NULL)
-		free(auxpath);
-
-	if(filestatus == 0)
-	{
-		/*do nothing;*/
-	}
-
-       	/*return (NULL);*/
 	/**
 	 *conditional checking if the array of tokens is bigger than the predetermined
 	 *size
@@ -75,7 +73,7 @@ char **parse_line(char *line)
 	 *Mark the end of the array with a NULL pointer
 	 */
 	tokens[position] = NULL;
-	for(;tokens[position];position++)
-		printf("%s\n",tokens[position]);
+
+	
 	return (tokens);
 }

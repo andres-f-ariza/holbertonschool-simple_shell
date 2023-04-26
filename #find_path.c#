@@ -19,7 +19,7 @@ char *find_path(char *file)
 		return (NULL);
 	auxpath = path;
 	strcpy(path, getenv("PATH"));
-	path = strtok(path, "=");
+       	path = strtok(path, "=");
 	path = strtok(NULL, "=");
 	path = strtok(path, ":");
 	filelen = strlen(file);
