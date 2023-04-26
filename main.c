@@ -17,7 +17,8 @@ int main(void)
 	{
 		i = 0;
 		if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, "$ ", 2);
+
+			write(STDOUT_FILENO, "($)", 3);
 
 		buffer = malloc(500);
 		nread = getline(&buffer, &bufsize, stdin);
@@ -38,14 +39,16 @@ int main(void)
 			continue;
 
 		args = parse_line(buffer);
-		while(args[i] != NULL)
-		{
-			printf("%s\n",args[i]);
-			i++;
-		}
-
+/**
+ *		while(args[i] != NULL)
+ *		{
+ *			printf("%s\n",args[i]);
+ *			i++;
+ *		}
+ */
 		execute(args);
 	free(args);
+	
 
 	}
 
