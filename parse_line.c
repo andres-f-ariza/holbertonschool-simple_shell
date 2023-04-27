@@ -45,8 +45,9 @@ char **parse_line(char *line)
 		{
 			tokens[0] = auxpath;
 		}
-		else
+		else if(filestatus == -1)
 		{
+			printf("%d\n",filestatus);
 			perror("test");
 			return (NULL);
 		}
