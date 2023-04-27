@@ -6,7 +6,7 @@
  *Return: array of tokens
  */
 
-char **parse_line(char *line)
+char **parse_line(char *line, char *exec_name)
 {
 	int bufsize = 64, position = 0;
 	char **tokens = malloc(bufsize*(sizeof(char*)));
@@ -15,7 +15,7 @@ char **parse_line(char *line)
 	int filestatus = 0;
 	char *auxpath = NULL;
 
-/**
+	/**
 	 *conditional checking whether the tokens pointer is null or not.
 	 */
 
@@ -38,6 +38,8 @@ char **parse_line(char *line)
 	 */
 
 	filestatus = stat(tokens[0], &st);
+	/**
+	 *printf("Status: %d\n",filestatus); */
 	if (getenv("PATH") != NULL && filestatus == -1)
 	{
 		auxpath = find_path(tokens[0]);
@@ -45,36 +47,25 @@ char **parse_line(char *line)
 		{
 			tokens[0] = auxpath;
 		}
-		else if(filestatus == -1)
+		else
 		{
-			printf("%d\n",filestatus);
-			perror("test");
+			printf("Status: %d\n",filestatus);
+			printf("File: %s\n", tokens[0]);
+			if (errno == ENOENT)
+			{
+				printf("%s: 1: %s: not found.\n", exec_name, tokens[0]);
+			}
+			else if (errno == EACCES)
+			{
+				printf("Error: Permission denied for file %s.\n", tokens[0]);
+			}
+			else
+			{
+				printf("Error: Unable to retrieve information about file %s (errno=%d)\n", tokens[0], errno);
+			}
 			return (NULL);
 		}
 	}
-	/**
-	 *conditional checking if the array of tokens is bigger than the predetermined
-	 *size
-	 */
-	/**
-	 *if (position >= bufsize)
-	*{
-	*/
-		/**
-		 *	bufsize += 64;
-		 *tokens = realloc(tokens, bufsize * sizeof(char *));
-		 *if (!tokens)
-		 *{
-		 *	perror("allocation error");
-		 *	exit(EXIT_FAILURE);
-		 *}
-		 *}
-		 */
-	/**
-	 *Mark the end of the array with a NULL pointer
-	 */
 	tokens[position] = NULL;
-
-	
 	return (tokens);
 }
