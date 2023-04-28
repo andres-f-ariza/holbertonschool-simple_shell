@@ -25,19 +25,3 @@ char *find_path(char *file);
 void builtin_env(void);
 
 #endif
-
-/**
- *macros
- */
-
-#define ISATTYOUT \
-	do {\
-	if (isatty(0) == 0)\
-		break;\
-	} while (0)
-
-#define ISATTYPROMPT(PROMPT, LEN) \
-	do {\
-	if (isatty(0) == 1)\
-		write(STDOUT_FILENO, (PROMPT), (LEN));\
-	} while (0)

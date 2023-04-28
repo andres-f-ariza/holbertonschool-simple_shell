@@ -9,7 +9,7 @@
 char **parse_line(char *line, char *exec_name)
 {
 	int bufsize = 64, position = 0;
-	char **tokens = malloc(bufsize*(sizeof(char*)));
+	char **tokens = calloc((sizeof(char*)), bufsize);
 	char *token = NULL;
 	struct stat st;
 	int filestatus = 0;
@@ -36,8 +36,8 @@ char **parse_line(char *line, char *exec_name)
 	/**
 	 *check if tokens[0] eixst in PATH
 	 */
-
-	filestatus = stat(tokens[0], &st);
+	if (tokens[0])
+		filestatus = stat(tokens[0], &st);
 	/**
 	 *printf("Status: %d\n",filestatus); */
 	if (getenv("PATH") != NULL && filestatus == -1)
