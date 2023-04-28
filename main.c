@@ -3,8 +3,6 @@ int main(int ac __attribute__((unused)), char** av)
 {
 	int status = 0;
 	char *buffer = NULL;
-	size_t bufsize = 500;
-	ssize_t nread = 0;
 	char **args = NULL;
 
 	/**
