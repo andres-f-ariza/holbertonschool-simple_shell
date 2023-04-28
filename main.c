@@ -20,25 +20,18 @@ int main(int ac __attribute__((unused)), char** av)
 			buffer = malloc(500);
 		write(STDOUT_FILENO, "($)", 3);
 
-		nread = getline(&buffer, &bufsize, stdin);
 		if (strcmp(buffer, "exit\n") == 0)
 			break;
 
-		if (*buffer == '\0' || *buffer == '\n')
-			continue;
-
+	   
 		args = parse_line(buffer, av[0]);
 
 		if(args)
 			status = execute(args);
 		else
 			status = 32512;
+	}
 
-	}
-	if(nread)
-	{
-		/*do nothing*/
-	}
 	free(buffer);
 	buffer = NULL;
 	exit(WEXITSTATUS(status));
